@@ -1,0 +1,1 @@
+export { ScopedLitElement } from "./ScopedLitElement";
