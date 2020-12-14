@@ -1,6 +1,5 @@
-import { LitElement } from "lit-element";
-import 'scoped-registries';
-export class ScopedLitElement extends LitElement {
+import "scoped-registries";
+export const Scoped = (baseClass) => class extends baseClass {
     static get scopedElements() {
         return {};
     }
@@ -11,12 +10,13 @@ export class ScopedLitElement extends LitElement {
         });
     }
     connectedCallback() {
-        super.connectedCallback();
-        const elements = this.constructor
-            .scopedElements;
+        if (super.connectedCallback) {
+            super.connectedCallback();
+        }
+        const elements = this.constructor.scopedElements;
         for (const tag of Object.keys(elements)) {
             this.shadowRoot.customElements.define(tag, elements[tag]);
         }
     }
-}
-//# sourceMappingURL=ScopedLitElement.js.map
+};
+//# sourceMappingURL=ScopedElementMixin.js.map

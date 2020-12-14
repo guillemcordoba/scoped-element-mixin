@@ -1,2 +1,2 @@
-export { ScopedLitElement } from "./ScopedLitElement";
+export { Scoped } from "./ScopedElementMixin";
 //# sourceMappingURL=index.js.map

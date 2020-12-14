@@ -1,1 +1,1 @@
-export { ScopedLitElement } from "./ScopedLitElement";
+export { Scoped, ScopedElementType } from "./ScopedElementMixin";
