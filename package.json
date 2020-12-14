@@ -1,5 +1,5 @@
 {
-  "name": "scoped-lit-element",
+  "name": "scoped-element-mixin",
   "version": "0.0.0",
   "description": "Webcomponent scoped-lit-element following open-wc recommendations",
   "author": "scoped-lit-element",
