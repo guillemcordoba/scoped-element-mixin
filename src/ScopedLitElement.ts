@@ -1,4 +1,5 @@
 import { html, css, LitElement, property } from "lit-element";
+import 'scoped-registries';
 
 export type Dictionary<T> = { [key: string]: T };
 
