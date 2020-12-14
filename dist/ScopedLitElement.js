@@ -1,4 +1,5 @@
 import { LitElement } from "lit-element";
+import 'scoped-registries';
 export class ScopedLitElement extends LitElement {
     static get scopedElements() {
         return {};

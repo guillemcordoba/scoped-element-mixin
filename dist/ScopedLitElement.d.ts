@@ -1,4 +1,5 @@
 import { LitElement } from "lit-element";
+import 'scoped-registries';
 export declare type Dictionary<T> = {
     [key: string]: T;
 };
