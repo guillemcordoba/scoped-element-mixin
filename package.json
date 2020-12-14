@@ -1,0 +1,27 @@
+{
+  "name": "scoped-lit-element",
+  "version": "0.0.0",
+  "description": "Webcomponent scoped-lit-element following open-wc recommendations",
+  "author": "scoped-lit-element",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "scripts": {
+    "start": "concurrently --kill-others --names tsc,web-dev-server \"npm run tsc:watch\" \"web-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
+    "build:watch": "tsc --watch",
+    "build": "rimraf dist && tsc"
+  },
+  "dependencies": {
+    "lit-html": "^1.1.2",
+    "lit-element": "^2.2.1",
+    "scoped-registries": "git+https://github.com/manolakis/scoped-registries.git"
+  },
+  "devDependencies": {
+    "@types/node": "13.11.1",
+    "@web/dev-server": "^0.0.12",
+    "concurrently": "^5.1.0",
+    "rimraf": "^3.0.2",
+    "tslib": "^1.11.0",
+    "typescript": "~4.0.3"
+  }
+}
