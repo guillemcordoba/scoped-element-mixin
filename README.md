@@ -1,31 +1,25 @@
-# \<scoped-lit-element>
+# ScopedLitElement
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
-
-## Installation
-```bash
-npm i scoped-lit-element
-```
+This is a very small class that imports the [`scoped-registries`](https://github.com/manolakis/scoped-registries/) polyfill and exposes an `scopedElements` function to override with the custom elements that should be registered inside the custom elements registry of the element.
 
 ## Usage
-```html
-<script type="module">
-  import 'scoped-lit-element/scoped-lit-element.js';
-</script>
 
-<scoped-lit-element></scoped-lit-element>
+```ts
+import { html } from 'lit-element';
+import { ScopedLitElement } from 'scoped-lit-element';
+import { MySubElement } from './my-sub-element';
+
+export class MyElement extends ScopedLitElement {
+  
+  static get scopedElements() {
+    return {
+      'my-sub-element': MySubElement,
+    };
+  }
+  render() {
+    return html`<my-sub-element></my-sub-element>`;
+  }
+}
 ```
 
-
-
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
-## Local Demo with `web-dev-server`
-```bash
-npm start
-```
-To run a local development server that serves the basic demo located in `demo/index.html`
+Bear in mind, this class needs and already includes the polyfill.
