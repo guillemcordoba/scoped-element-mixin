@@ -1,3 +1,4 @@
+import { Constructor } from "lit-element";
 import "scoped-registries";
 
 export type Dictionary<T> = { [key: string]: T };
@@ -8,7 +9,14 @@ declare global {
   }
 }
 
-export const Scoped = (baseClass: typeof HTMLElement) =>
+export type ScopedElement = HTMLElement & {
+  readonly scopedElements: Dictionary<typeof HTMLElement>;
+  shadowRoot: ShadowRoot & { customElements: CustomElementRegistry };
+};
+
+export const Scoped = (
+  baseClass: Constructor<HTMLElement>
+): Constructor<ScopedElement> =>
   class extends baseClass {
     shadowRoot!: ShadowRoot & { customElements: CustomElementRegistry };
 
