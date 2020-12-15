@@ -11,7 +11,7 @@ import { MySubElement } from './my-sub-element';
 
 export class MyElement extends Scoped(LitElement) {
   
-  static get scopedElements() {
+  get scopedElements() {
     return {
       'my-sub-element': MySubElement,
     };

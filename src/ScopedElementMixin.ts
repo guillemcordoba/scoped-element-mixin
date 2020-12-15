@@ -8,15 +8,11 @@ declare global {
   }
 }
 
-export type ScopedElementType = typeof HTMLElement & {
-  scopedElements: Dictionary<typeof HTMLElement>;
-};
-
 export const Scoped = (baseClass: typeof HTMLElement) =>
   class extends baseClass {
     shadowRoot!: ShadowRoot & { customElements: CustomElementRegistry };
 
-    static get scopedElements(): Dictionary<typeof HTMLElement> {
+    get scopedElements(): Dictionary<typeof HTMLElement> {
       return {};
     }
 
@@ -32,7 +28,7 @@ export const Scoped = (baseClass: typeof HTMLElement) =>
         super.connectedCallback();
       }
 
-      const elements = (this.constructor as ScopedElementType).scopedElements;
+      const elements = this.scopedElements;
 
       for (const tag of Object.keys(elements)) {
         this.shadowRoot.customElements.define(tag, elements[tag]);
