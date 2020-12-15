@@ -1,6 +1,6 @@
 import "scoped-registries";
 export const Scoped = (baseClass) => class extends baseClass {
-    static get scopedElements() {
+    get scopedElements() {
         return {};
     }
     createRenderRoot() {
@@ -13,7 +13,7 @@ export const Scoped = (baseClass) => class extends baseClass {
         if (super.connectedCallback) {
             super.connectedCallback();
         }
-        const elements = this.constructor.scopedElements;
+        const elements = this.scopedElements;
         for (const tag of Object.keys(elements)) {
             this.shadowRoot.customElements.define(tag, elements[tag]);
         }

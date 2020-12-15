@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../src/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAqB,MAAM,sBAAsB,CAAC","sourcesContent":["export { Scoped, ScopedElementType } from \"./ScopedElementMixin\";\n"]}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../src/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,sBAAsB,CAAC","sourcesContent":["export { Scoped } from \"./ScopedElementMixin\";\n"]}

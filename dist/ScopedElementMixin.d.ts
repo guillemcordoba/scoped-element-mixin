@@ -7,14 +7,15 @@ declare global {
         connectedCallback?(): void;
     }
 }
-export declare type ScopedElementType = typeof HTMLElement & {
-    scopedElements: Dictionary<typeof HTMLElement>;
-};
 export declare const Scoped: (baseClass: typeof HTMLElement) => {
     new (): {
         shadowRoot: ShadowRoot & {
             customElements: CustomElementRegistry;
         };
+        readonly scopedElements: Dictionary<{
+            new (): HTMLElement;
+            prototype: HTMLElement;
+        }>;
         createRenderRoot(): ShadowRoot;
         connectedCallback(): void;
         accessKey: string;
@@ -275,8 +276,4 @@ export declare const Scoped: (baseClass: typeof HTMLElement) => {
         blur(): void;
         focus(options?: FocusOptions | undefined): void;
     };
-    readonly scopedElements: Dictionary<{
-        new (): HTMLElement;
-        prototype: HTMLElement;
-    }>;
 };
