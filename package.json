@@ -14,7 +14,7 @@
   "dependencies": {
     "lit-html": "^1.1.2",
     "lit-element": "^2.2.1",
-    "scoped-registries": "git+https://github.com/manolakis/scoped-registries.git"
+    "scoped-registries": "git+https://github.com/guillemcordoba/scoped-registries.git"
   },
   "devDependencies": {
     "@types/node": "13.11.1",
