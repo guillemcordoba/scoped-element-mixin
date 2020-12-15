@@ -1,5 +1,4 @@
 import "scoped-registries";
-;
 export const Scoped = (baseClass) => class extends baseClass {
     get scopedElements() {
         return {};

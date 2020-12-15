@@ -14,4 +14,4 @@ export interface ScopedElement extends HTMLElement {
         customElements: CustomElementRegistry;
     };
 }
-export declare const Scoped: (baseClass: Constructor<HTMLElement>) => Constructor<ScopedElement>;
+export declare const Scoped: <T extends Constructor<HTMLElement>>(baseClass: T) => T & Constructor<ScopedElement>;

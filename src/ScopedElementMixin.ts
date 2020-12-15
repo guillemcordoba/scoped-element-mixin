@@ -12,11 +12,11 @@ declare global {
 export interface ScopedElement extends HTMLElement {
   readonly scopedElements: Dictionary<typeof HTMLElement>;
   shadowRoot: ShadowRoot & { customElements: CustomElementRegistry };
-};
+}
 
-export const Scoped = (
-  baseClass: Constructor<HTMLElement>
-): Constructor<ScopedElement> =>
+export const Scoped = <T extends Constructor<HTMLElement>>(
+  baseClass: T
+): T & Constructor<ScopedElement> =>
   class extends baseClass {
     shadowRoot!: ShadowRoot & { customElements: CustomElementRegistry };
 
