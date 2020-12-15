@@ -8,10 +8,10 @@ declare global {
         connectedCallback?(): void;
     }
 }
-export declare type ScopedElement = HTMLElement & {
+export interface ScopedElement extends HTMLElement {
     readonly scopedElements: Dictionary<typeof HTMLElement>;
     shadowRoot: ShadowRoot & {
         customElements: CustomElementRegistry;
     };
-};
+}
 export declare const Scoped: (baseClass: Constructor<HTMLElement>) => Constructor<ScopedElement>;

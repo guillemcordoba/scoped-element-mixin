@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-export type ScopedElement = HTMLElement & {
+export interface ScopedElement extends HTMLElement {
   readonly scopedElements: Dictionary<typeof HTMLElement>;
   shadowRoot: ShadowRoot & { customElements: CustomElementRegistry };
 };
