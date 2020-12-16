@@ -1,7 +1,5 @@
 import { Constructor } from "lit-element";
-import "scoped-registries";
-
-export type Dictionary<T> = { [key: string]: T };
+import { Dictionary, ScopedElementConstructor } from "./types";
 
 declare global {
   interface HTMLElement {
@@ -9,37 +7,11 @@ declare global {
   }
 }
 
-export interface ScopedElement extends HTMLElement {
-  readonly scopedElements: Dictionary<typeof HTMLElement>;
-  shadowRoot: ShadowRoot & { customElements: CustomElementRegistry };
-}
-
 export const Scoped = <T extends Constructor<HTMLElement>>(
   baseClass: T
-): T & Constructor<ScopedElement> =>
+): T & ScopedElementConstructor =>
   class extends baseClass {
-    shadowRoot!: ShadowRoot & { customElements: CustomElementRegistry };
-
-    get scopedElements(): Dictionary<typeof HTMLElement> {
+    static get scopedElements(): Dictionary<typeof HTMLElement> {
       return {};
-    }
-
-    createRenderRoot() {
-      return this.attachShadow({
-        mode: "open",
-        customElements: new CustomElementRegistry(),
-      } as any);
-    }
-
-    connectedCallback() {
-      if (super.connectedCallback) {
-        super.connectedCallback();
-      }
-
-      const elements = this.scopedElements;
-
-      for (const tag of Object.keys(elements)) {
-        this.shadowRoot.customElements.define(tag, elements[tag]);
-      }
     }
   };

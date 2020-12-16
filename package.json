@@ -6,14 +6,17 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "concurrently --kill-others --names tsc,web-dev-server \"npm run tsc:watch\" \"web-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
     "build:watch": "tsc --watch",
     "build": "rimraf dist && tsc"
   },
   "dependencies": {
-    "lit-html": "^1.1.2",
-    "lit-element": "^2.2.1",
+    "lit-html": "^1.2.0",
+    "lit-element": "^2.4.0",
     "scoped-registries": "git+https://github.com/guillemcordoba/scoped-registries.git"
   },
   "devDependencies": {
