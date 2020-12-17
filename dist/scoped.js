@@ -1,6 +1,6 @@
 import "scoped-registries";
 export const scopeElement = (base) => {
-    if (base.getStyles())
+    if (base.getStyles)
         return scopeLitElement(base);
     else
         return scopeHTMLElement(base);

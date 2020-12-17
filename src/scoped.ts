@@ -5,7 +5,7 @@ import { Constructor, LitElement } from "lit-element";
 export const scopeElement = <T extends Constructor<HTMLElement>>(
   base: T
 ): T => {
-  if (((base as unknown) as any).getStyles())
+  if (((base as unknown) as any).getStyles)
     return (scopeLitElement(
       (base as any) as Constructor<LitElement>
     ) as any) as T;
