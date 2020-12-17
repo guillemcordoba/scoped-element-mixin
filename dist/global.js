@@ -5,7 +5,7 @@ export function defineGlobalElements(elements) {
             defineGlobalElements(element.scopedElements);
         }
         const existingElement = window.customElements.get(tag);
-        if (existingElement !== elements[tag])
+        if (existingElement && existingElement !== elements[tag])
             throw new Error("Trying to redefine already existing element with a different class: try scoping the elements");
         window.customElements.define(tag, elements[tag]);
     }
