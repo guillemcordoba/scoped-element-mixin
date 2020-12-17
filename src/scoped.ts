@@ -34,13 +34,15 @@ const scopeHTMLElement = <T extends Constructor<HTMLElement>>(base: T) =>
 
       const elements = (this.constructor as ScopedElementConstructor)
         .scopedElements;
-
-      for (const tag of Object.keys(elements)) {
-        (((this.shadowRoot as any) as { customElements: CustomElementRegistry })
-          .customElements as CustomElementRegistry).define(
-          tag,
-          scopeElement(elements[tag])
-        );
+      if (elements) {
+        for (const tag of Object.keys(elements)) {
+          (((this.shadowRoot as any) as {
+            customElements: CustomElementRegistry;
+          }).customElements as CustomElementRegistry).define(
+            tag,
+            scopeElement(elements[tag])
+          );
+        }
       }
     }
   };
@@ -63,13 +65,16 @@ const scopeLitElement = <T extends Constructor<LitElement>>(base: T): T =>
 
       const elements = (this.constructor as ScopedElementConstructor)
         .scopedElements;
-
-      for (const tag of Object.keys(elements)) {
-        (((this.shadowRoot as any) as { customElements: CustomElementRegistry })
-          .customElements as CustomElementRegistry).define(
-          tag,
-          scopeElement(elements[tag])
-        );
+        
+      if (elements) {
+        for (const tag of Object.keys(elements)) {
+          (((this.shadowRoot as any) as {
+            customElements: CustomElementRegistry;
+          }).customElements as CustomElementRegistry).define(
+            tag,
+            scopeElement(elements[tag])
+          );
+        }
       }
     }
   };

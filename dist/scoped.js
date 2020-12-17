@@ -23,9 +23,10 @@ const scopeHTMLElement = (base) => class extends base {
         }
         const elements = this.constructor
             .scopedElements;
-        for (const tag of Object.keys(elements)) {
-            this.shadowRoot
-                .customElements.define(tag, scopeElement(elements[tag]));
+        if (elements) {
+            for (const tag of Object.keys(elements)) {
+                this.shadowRoot.customElements.define(tag, scopeElement(elements[tag]));
+            }
         }
     }
 };
@@ -46,9 +47,10 @@ const scopeLitElement = (base) => class extends base {
         super.connectedCallback();
         const elements = this.constructor
             .scopedElements;
-        for (const tag of Object.keys(elements)) {
-            this.shadowRoot
-                .customElements.define(tag, scopeElement(elements[tag]));
+        if (elements) {
+            for (const tag of Object.keys(elements)) {
+                this.shadowRoot.customElements.define(tag, scopeElement(elements[tag]));
+            }
         }
     }
 };
