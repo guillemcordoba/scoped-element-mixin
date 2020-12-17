@@ -15,8 +15,8 @@
     "build": "rimraf dist && tsc"
   },
   "dependencies": {
-    "lit-html": "^1.2.0",
     "lit-element": "^2.4.0",
+    "lit-html": "^1.2.0",
     "scoped-registries": "git+https://github.com/guillemcordoba/scoped-registries.git"
   },
   "devDependencies": {
