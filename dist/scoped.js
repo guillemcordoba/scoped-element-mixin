@@ -33,7 +33,12 @@ const scopeHTMLElement = (base) => class extends base {
 const scopeLitElement = (base) => class extends ScopedElementsMixin(base) {
     static get scopedElements() {
         if (base.scopedElements) {
-            return base.scopedElements;
+            const elements = base
+                .scopedElements;
+            for (const key of Object.keys(elements)) {
+                elements[key] = scopeElement(elements[key]);
+            }
+            return elements;
         }
         else
             return {};

@@ -50,8 +50,14 @@ const scopeHTMLElement = <T extends Constructor<HTMLElement>>(base: T) =>
 const scopeLitElement = <T extends Constructor<LitElement>>(base: T): T =>
   class extends ScopedElementsMixin(base) {
     static get scopedElements() {
-      if ((base as unknown as ScopedElementConstructor).scopedElements) {
-        return (base as unknown as ScopedElementConstructor).scopedElements;
+      if (((base as unknown) as ScopedElementConstructor).scopedElements) {
+        const elements = ((base as unknown) as ScopedElementConstructor)
+          .scopedElements;
+
+        for (const key of Object.keys(elements)) {
+          elements[key] = scopeElement(elements[key]);
+        }
+        return elements;
       } else return {};
     }
   };
