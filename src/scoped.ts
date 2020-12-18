@@ -1,5 +1,4 @@
 import { ScopedElementConstructor } from "./types";
-import "scoped-registries";
 import { Constructor, LitElement } from "lit-element";
 
 export const scopeElement = <T extends Constructor<HTMLElement>>(
